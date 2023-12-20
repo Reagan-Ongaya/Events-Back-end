@@ -6,7 +6,7 @@ Base = declarative_base()
 
 
 #defining destination model
-class Destiation(Base):
+class Destination(Base):
     __tablename__ = "destinations"
     
     #def column

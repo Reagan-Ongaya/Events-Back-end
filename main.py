@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from schemas import DestinationSchema
 
 app = FastAPI()
 
@@ -12,15 +13,13 @@ def index():
 
 #getting all destination
 @app.get('/destinations')
-def destinations():
+def destination():
     return[]
-
 
 #getting a single destination
 @app.get('/destinations/{destination_id}')
-def event():
+def destination():
     return []
-
 
 #post a destination
 @app.post('/')
@@ -30,7 +29,8 @@ def create():
     }
     
 @app.post('/destinations')
-def create_destinations():
+def create_destinations(destination: DestinationSchema):
+    print(destination)
     return{
         "message":"Destination created with success"
     }

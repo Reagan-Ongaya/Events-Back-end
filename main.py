@@ -1,4 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
+from database import get_db
+from models import Destiation
 from schemas import DestinationSchema
 
 app = FastAPI()
@@ -13,8 +16,9 @@ def index():
 
 #getting all destination
 @app.get('/destinations')
-def destination():
-    return[]
+def destinations(db: Session = Depends(get_db)):
+    destinations = db.query(Destiation).all()
+    return destinations
 
 #getting a single destination
 @app.get('/destinations/{destination_id}')
